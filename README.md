@@ -3,6 +3,15 @@ Mongoose i18n Schema Plugin
 
 Forked from [justin-lau/mongoose-i18n](https://github.com/justin-lau/mongoose-i18n)
 
+Usage
+-----
+
+Install:
+
+```bash
+npm i --save mongoose varavut/mongoose-i18n
+```
+
 Create your schema:
 
 ```coffee-script
