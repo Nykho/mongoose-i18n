@@ -32,7 +32,8 @@ Document = mongoose.Document
 exports = module.exports = (schema, options) ->
   unless _.isArray(options?.languages)
     throw new TypeError 'Must pass an array of languages.'
-
+  if options.defaultLanguage?
+    schema.options.defaultLanguage = options.defaultLanguage;
   schema.eachPath (path, config) ->
     # process if i18n: true
     if config.options.i18n
@@ -134,9 +135,9 @@ translateObject = (object, schema, translation) ->
       tree = tree[keys.shift()] while keys.length > 2
 
       if _.isArray(tree)
-        tree[index][keys[0]] = tree[index][keys[0]]?[translation] for child, index in tree
+        tree[index][keys[0]] = (tree[index][keys[0]]?[translation] ? tree[index][keys[0]]?[schema.options.defaultLanguage]) for child, index in tree
       else
-        tree[keys[0]] = tree[keys[0]]?[translation]
+        tree[keys[0]] = tree[keys[0]]?[translation] ? tree[keys[0]]?[schema.options.defaultLanguage]
 
 # Add remove method to Schema prototype
 #

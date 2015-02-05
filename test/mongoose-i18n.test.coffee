@@ -65,8 +65,24 @@ describe 'Translatable', ->
                             expect(err).to.be.an.instanceOf(ValidationError)
                                        .and.match(/en_US/i)
                                        .and.match(/required/i)
-
+                            
                             done()
+
+            describe 'and default language remember', ->
+
+                before ->
+                    TranslatableSchema = new Schema
+                        index : Number
+                        value : { type: String, i18n: true, required: true }
+
+                    TranslatableSchema.plugin(i18n, { languages: ['en_US', 'es_ES', 'fr_FR'], defaultLanguage: 'en_US' })
+                    Translatable = mongoose.model('Translatable_0_0_0', TranslatableSchema)
+
+                it 'must have defaultLanguage option in schema', (done) ->
+
+                    expect(new Translatable().schema).to.have.deep.property('options.defaultLanguage').that.equals('en_US')
+
+                    done()
 
             describe 'and default language absent', ->
 
