@@ -1,7 +1,7 @@
 Mongoose i18n Schema Plugin
 ===========================
 
-Folked from [justin-lau/mongoose-i18n](https://github.com/justin-lau/mongoose-i18n)
+Forked from [justin-lau/mongoose-i18n](https://github.com/justin-lau/mongoose-i18n)
 
 Create your schema:
 
