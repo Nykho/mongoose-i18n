@@ -1,6 +1,5 @@
 chai           = require('chai')
 chaiAsPromised = require('chai-as-promised')
-debug          = require('debug')('mongoose-i18n:test')
 mongoose       = require('mongoose')
 Q              = require('q')
 i18n           = require('../src/mongoose-i18n')

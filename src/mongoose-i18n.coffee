@@ -11,7 +11,6 @@
 'use strict'
 
 _ = require 'lodash'
-debug = require('debug')('mongoose-i18n')
 mongoose = require 'mongoose'
 
 Document = mongoose.Document
