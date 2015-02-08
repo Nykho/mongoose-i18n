@@ -133,6 +133,9 @@ translateObject = (object, schema, translation) ->
 
       tree = tree[keys.shift()] while keys.length > 2
 
+      if _.isNull(tree)
+        return
+
       if _.isArray(tree)
         tree[index][keys[0]] = (tree[index][keys[0]]?[translation] ? tree[index][keys[0]]?[schema.options.defaultLanguage]) for child, index in tree
       else
